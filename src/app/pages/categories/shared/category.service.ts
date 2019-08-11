@@ -29,7 +29,7 @@ export class CategoryService {
 
 
    getById(id: number): Observable<Category[]>{
-     const url = '$(rhis.apiPath)/$(id)';
+     const url = '$(this.apiPath)/$(id)';
 
      return this.http.get(url).pipe(
        catchError(this.handleError),
@@ -45,7 +45,7 @@ export class CategoryService {
     }
 
     update(category: Category): Observable<Category>{
-      const url = '$(rhis.apiPath)/$(category.id)';
+      const url = '$(this.apiPath)/$(category.id)';
       return this.http.put(url, category).pipe(
         catchError(this.handleError),
         map(()=> category)
@@ -54,7 +54,8 @@ export class CategoryService {
     }
 
     delete(id: number): Observable<any>{
-      const url = '$(rhis.apiPath)/$(id)';
+     
+      const url = '$(this.apiPath)/$(id)';
       return this.http.delete(url).pipe(
         catchError(this.handleError),
         map(()=>null)
@@ -73,7 +74,7 @@ private jsonDataToCategory(jsonData: any): Category {
   return jsonData as Category;
 }
 
-  private handleError(error:any): Observable<any>{
+  private handleError(error: any): Observable<any>{
   console.log("ERRO NA REQUISIÇÃO =>", error);
   
     return throwError(error);

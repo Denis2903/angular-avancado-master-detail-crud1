@@ -17,5 +17,14 @@ export class CategoryListComponent implements OnInit {
       error => alert('Erro ao Carregar a lista')
     )
   }
+  deleteCategory(category){
+    const mustDelete = confirm('Deseja Realmente excluir este item?');
+    if(mustDelete){
+    this.categoryService.delete(category.id).subscribe(
+      ()=> this.categories = this.categories.filter(element => element != category),
+      ()=> alert("Erro ao tentar excluir")
+    )
+   }
+  }
 
 }
