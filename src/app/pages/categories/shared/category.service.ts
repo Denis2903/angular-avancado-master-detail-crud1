@@ -1,9 +1,16 @@
 import { Injectable } from '@angular/core';
-import{HttpClient,HttpHeaders} from "@angular/common/http";
-import{Observable, throwError} from "rxjs";
-import {map, catchError, flatMap} from "rxjs/operators";
-import { Category } from "./Category";
-import { element } from '@angular/core/src/render3';
+import{HttpClient,HttpHeaders} from '@angular/common/http';
+
+
+import{Observable, throwError} from 'rxjs';
+import {map, catchError, flatMap} from 'rxjs/operators';
+
+
+
+import { Category } from './Category';
+
+
+
 
 
 @Injectable({
@@ -58,12 +65,12 @@ export class CategoryService {
 
   private jsonDataToCategories(jsonData: any[]): Category[]{
     const categories: Category[]=[];
-    jsonData.forEach(elemnt => categories.push(element as Category)); 
+    jsonData.forEach(elemnt => categories.push(elemnt as Category)); 
   return categories
   }
 
-private jsonDataToCategory(jsinData: any): Category {
-  return jsinData as Category;
+private jsonDataToCategory(jsonData: any): Category {
+  return jsonData as Category;
 }
 
   private handleError(error:any): Observable<any>{
